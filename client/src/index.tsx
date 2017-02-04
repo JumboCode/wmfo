@@ -29,4 +29,4 @@ ReactDOM.render((
             <Route path="*" component={Unknown}/>
         </Route>
     </Router>
-), document.getElementById('igetback-content'));
+), document.getElementById('wmfo-content'));
