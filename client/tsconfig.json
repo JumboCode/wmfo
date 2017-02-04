@@ -6,7 +6,11 @@
         "noImplicitAny": true,
         "target": "es5",
         "jsx": "react",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noUnusedParameters": true
     },
     "typeRoots": [
         "node_modules/@types"
