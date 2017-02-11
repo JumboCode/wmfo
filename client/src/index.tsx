@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Router, Route, Link, browserHistory, IndexRoute, Redirect } from "react-router"
+import { Router, Route, Link, browserHistory, IndexRoute } from "react-router"
 
 import { Hello } from "./components/Hello";
 import { About } from "./components/About";
