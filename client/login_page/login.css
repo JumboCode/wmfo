@@ -1,0 +1,64 @@
+body {
+    /*background-color: #96beff;*/
+    background-color: #4c4c4c;
+}
+
+h1 {
+    font-family: helvetica;
+    font-size: 72px;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+input[type=text], [type=password] {
+    width: auto;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus, [type=password]:focus {
+    border: 3px solid #555;
+}
+
+input[type=submit] {
+
+}
+
+#studio {
+    display: block;
+    margin: auto;
+    width: 100%;
+    opacity: 0.7;
+}
+
+#studio_container {
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    width: 20%;
+}
+
+#logo_container {
+
+}
+
+#login_container {
+    margin: auto;
+    width: 20%;
+    font-family: helvetica;
+    padding-top: 25px;
+}
+
+#submit {
+    margin: auto;
+    width: 100px;
+    height: 200px;
+}
