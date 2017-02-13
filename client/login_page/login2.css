@@ -18,12 +18,21 @@ body {
     margin-left: -8px;
     margin-top: -8px;
     overflow: hidden;
-    background-color: #555555;
+    background-color: #333333;
+}
+
+#title {
+    font-family: helvetica;
+    font-size: 36px;
+    text-align: left;
+    width: 100%;
+    padding-left: 75%;
+    position: relative;
 }
 
 #logo {
     width: 29%;
-    border: 5px black;
+    border: 5px #333333;
     border-style: solid;
 
     /*display: block;
