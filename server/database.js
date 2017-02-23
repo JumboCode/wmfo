@@ -14,8 +14,9 @@ query_dj = client.query(
 var query_djShow = client.query(
 				  'DROP TABLE IF EXISTS djShow');
 query_djShow = client.query(
-'CREATE TABLE djshow(tuftsID INTEGER REFERENCES dj(tuftsID), showID INTEGER REFERENCES show(showID))');
+'CREATE TABLE djshow(tuftsID INTEGER, showID INTEGER)');
 var query_volunteerLog = client.query(
 				      'DROP TABLE IF EXISTS volunteerLog');
 query_volunteerLog = client.query(
-'CREATE TABLE volunteerlog(tuftsID INTEGER REFERENCES dj(tuftsID), date DATE, length INTEGER, approved BOOLEAN, task TEXT)');
+'CREATE TABLE volunteerLog(tuftsID INTEGER, date DATE, length INTEGER, approved BOOLEAN, task TEXT)');
+
