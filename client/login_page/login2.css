@@ -4,7 +4,7 @@ body {
 
 #whitebox {
     width: calc(101% + 2px);
-    height: 30%;
+    height: 20%;
     background-color: white;
     margin-left: -8px;
     margin-top: -8px;
@@ -76,8 +76,10 @@ body {
 input[type=text], [type=password] {
     width: auto;
     padding: 20px 20px;
-    box-sizing: border-box;
     font-size: 24px;
+    box-sizing: border-box;
+
+
 }
 
 .button {
