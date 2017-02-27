@@ -45,21 +45,6 @@ body {
     padding-right: 18px;
 }
 
-.login_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-#login_container_container {
-    padding-top: 60px;
-    padding-bottom: 50px;
-}
-
-
 #submit_button {
     margin-top: 40px;
     width: 200px;
@@ -75,26 +60,46 @@ input[type=text], [type=password] {
     padding: 20px 20px;
     font-size: 24px;
     box-sizing: border-box;
-
-
 }
 
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px 50px;
-    text-align: center;
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    margin: 40px 2px;
-    cursor: pointer;
-    border-radius: 12px;
+    font-family: helvetica;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
 }
 
-.button:hover {
-    background-color: #3C9F40
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 /*input[type=text]:focus, [type=password]:focus {

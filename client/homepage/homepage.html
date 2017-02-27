@@ -9,12 +9,31 @@
 </head>
 
 <body>
+
     <div id="whitebox">
-        <img src="wmfologo.png" id="logo">
+        <span style="font-size:60px; cursor:pointer; margin-left:20px; font-family:helvetica; position:absolute;" onclick="openNav()">&#9776;</span>
+        <a href="homepage.html"><img src="wmfologo.png" id="logo"></a>
     </div>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Thing 1</a><br>
+        <a href="#">Thing 2</a><br>
+        <a href="#">Thing 3</a><br>
+        <a href="#">Thing 4</a><br>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "350px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
     <div id="graybox">
-        Hello
+
     </div>
 </body>
 
