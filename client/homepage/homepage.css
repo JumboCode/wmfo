@@ -24,9 +24,12 @@ body {
 #title {
     font-family: helvetica;
     font-size: 36px;
-    text-align: left;
-    width: 100%;
-    padding-left: 75%;
+    text-align: center;
+    justify-content: center;
+    margin-left: 45%;
+    margin-right: 45%;
+    color: white;
+    padding-top: 1000px;
     position: relative;
 }
 
@@ -43,23 +46,6 @@ body {
 
     padding-left: 18px;
     padding-right: 18px;
-}
-
-#submit_button {
-    margin-top: 40px;
-    width: 200px;
-    height: 70px;
-    font-family: helvetica;
-    font-size: 24px;
-    background-color: white;
-    color: black;
-}
-
-input[type=text], [type=password] {
-    width: auto;
-    padding: 20px 20px;
-    font-size: 24px;
-    box-sizing: border-box;
 }
 
 .sidenav {
