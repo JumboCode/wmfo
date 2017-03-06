@@ -1,18 +1,17 @@
-const pgp = require('pg-promise')();
-const db = pgp('postgres://localhost:5432/wmfo');
-
+var pgp = require('pg-promise')();
+var db = pgp('postgres://localhost:5432/wmfo');
+console.log("Hello World!");
 function getInsertUserId(firstName) {
-        return db.task(t => {
-                        return t.oneOrNone
-         ('SELECT tuftsid FROM dj WHERE firstName = $1', firstName, u => u && u.id)
-                                        .then(userId => {
-                                                                return userId //|| t.one('INSERT INTO dj(firstName) VALUES($1) RETURNING tuftsid', firstName, u => u.id);
-                                                                                });
-                                                });
+    return db.task(function (t) {
+        return t.oneOrNone('SELECT tuftsid FROM dj WHERE firstName = $1', firstName, function (u) { return u && u.tuftsid; })
+            .then(function (tuftsid) {
+            return tuftsid || t.one('INSERT INTO dj(firstName) VALUES($1)RETURNING tuftsid', firstName, function (u) { return u.id; });
+        });
+    });
 }
 //|| t.one('INSERT INTO Users(name) VALUES($1) RETURNING id', name, u => u.id)
-
 console.log('beforefunctioncall');
-var toprint = getInsertUserId('Mac');
-console.log(toprint);
+var toprint = getInsertUserId('mac');
+//console.log(toprint);
+toprint.then(results => console.log(results));
 console.log('AFTER');
