@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Link} from "react-router";
-export interface HelloProps { compiler: string; framework: string; }
+export interface HomeProps { compiler: string; framework: string; }
 
-export class Hello extends React.Component<HelloProps, undefined> {
+export class Home extends React.Component<HomeProps, undefined> {
     render() {
     	return (
     		<div>
@@ -22,7 +22,7 @@ export class Hello extends React.Component<HelloProps, undefined> {
 						<div id="main">
 						  <div id="user"><h1>User Profile</h1>
 
-                			<li><Link to="/hello">Hello</Link></li>
+                			<li><Link to="/home">Home</Link></li>
                			 	<li><Link to="/show_form">Show Form</Link></li>
 
 						   
