@@ -9,8 +9,6 @@ function getdj(firstName) {
     });
 }
 //|| t.one('INSERT INTO Users(name) VALUES($1) RETURNING id', name, u => u.id)
-console.log('beforefunctioncall');
-var toprint = getdj('mac');
-//console.log(toprint);
+console.log("This should not work, hopefully return NULL, because nick not in dj relation");
+var toprint = getdj('nick');
 toprint.then(results => console.log(results));
-console.log('AFTER');
