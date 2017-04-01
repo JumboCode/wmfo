@@ -20,8 +20,8 @@ export class RouteManager {
     constructor(private app: express.Express) {
     }
 
-    public addSecureRoutes(routes: {route: SecureRoute, permissionLevel: PermissionLevel}[]): void {
-        routes.forEach(route => this.addSecureRoute(route.route, route.permissionLevel));
+    public addSecureRoutes(routes: SecureRoute[]): void {
+        routes.forEach(route => this.addSecureRoute(route));
     }
 
     public addInsecureRoutes(routes: InsecureRoute[]): void {
@@ -50,7 +50,7 @@ export class RouteManager {
         method(route.route, route.cont);
     }
 
-    public addSecureRoute(route: SecureRoute, permissionLevel: PermissionLevel): void {
+    public addSecureRoute(route: SecureRoute): void {
         let method: (string: any, ExpressContinuation: any) => void = this.determineMethod(route.httpMethod);
 
         method(route.route, (req: any, res: any) => {
@@ -66,7 +66,7 @@ export class RouteManager {
 
             authTokenResult.caseOf({
                 just: async (token: AuthToken) => {
-                    if (!security.validateAuthToken(token) || token.permissionLevel !== permissionLevel) {
+                    if (!security.validateAuthToken(token) || token.permissionLevel !== route.permissionLevel) {
                         unauthorizedCont();
                     } else {
                         route.cont(req, res, token);
@@ -104,7 +104,7 @@ export class InsecureRouteBuilder extends RouteBuilder {
 }
 
 export class SecureRouteBuilder extends RouteBuilder {
-    constructor(readonly route: string, readonly cont: SecureContinuation) {
+    constructor(readonly route: string, readonly cont: SecureContinuation, readonly permissionLevel: PermissionLevel) {
         super(route);
     }
 }
@@ -133,8 +133,10 @@ export class InsecureRoute extends Route {
 
 export class SecureRoute extends Route {
     readonly cont: SecureContinuation;
+    readonly permissionLevel: PermissionLevel;
     constructor(builder: SecureRouteBuilder) {
         super(builder.route, builder.httpMethod, builder.isAjax);
         this.cont = builder.cont;
+        this.permissionLevel = builder.permissionLevel;
     }
 }
