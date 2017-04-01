@@ -10,11 +10,25 @@ interface dj {
 }
 */
 
+
+/* DJ TABLE */
 /* Takes a first name string of a dj and returns the id of the dj */
 function getUserID(firstName: string): Promise<number> {
     return db.one('SELECT tuftsid FROM dj WHERE firstName = $1', firstName);
 }
 
+function getDj(tuftsID: number): Promise<string> {
+    return db.one('SELECT firstName FROM dj WHERE tuftsID = $1', tuftsID);
+}
+
+/*
+function insertDj(firstName: string, lastName: string, djName: string, tuftsID: number, volunteerHours: number, active: boolean) {
+    return db.none('INSERT INTO dj(firstName, lastName, djName, tuftsID, volunteerHours, active) VALUES($1, $2, $3, $4, $5, $6)', [firstName, lastName, djName, tuftsID, volunteerHours, active])
+    .then(() => {console.log("//////WE INSERTED NEW DJ")});
+}
+*/
+
+/* INSERTING DATA TO SHOW TABLE */
 /* Takes the name of the show and the id of the show and returns nothing */
 /*
 function insertShow(name:string, id: number) {
@@ -24,9 +38,6 @@ function insertShow(name:string, id: number) {
 }
 */
 
-function getDj(tuftsID: number): Promise<string> {
-    return db.one('SELECT firstName FROM dj WHERE tuftsID = $1', tuftsID);
-}
 
 
 export async function printing() {
@@ -39,6 +50,7 @@ export async function printing() {
     console.log("'exception: ' e");
   }
 
+  //await insertDj('Nick', 'Metz', 'NickyMetz', 69, 9, true);
  // await insertShow('Annie', 618);
 }
 
