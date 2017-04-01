@@ -14,8 +14,7 @@ CREATE TABLE dj(
 		djName TEXT, 
 		tuftsID INTEGER PRIMARY KEY, 
 		volunteerHours INTEGER, 
-		active BOOLEAN
-		eboard BOOLEAN);
+		active BOOLEAN);
 
 CREATE TABLE djShow(
 		tuftsID INTEGER, 
