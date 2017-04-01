@@ -14,7 +14,7 @@ CREATE TABLE dj(
 		djName TEXT, 
 		tuftsID INTEGER PRIMARY KEY, 
 		volunteerHours INTEGER, 
-		active BOOLEAN
+		active BOOLEAN,
 		eboard BOOLEAN);
 
 CREATE TABLE djShow(
@@ -30,6 +30,8 @@ CREATE TABLE volunteerLog(
 
 CREATE TABLE showRequest(
        tuftsID INTEGER, --should be array but creates incompatible type error(int vs int[]) 
+       otherIDs TEXT, -- not the best way to do this but makes the above line work
+       numDJs INTEGER,
        name TEXT,
        description TEXT,
        possibleShowdays INTEGER ARRAY[15],

@@ -14,7 +14,8 @@ CREATE TABLE dj(
 		djName TEXT, 
 		tuftsID INTEGER PRIMARY KEY, 
 		volunteerHours INTEGER, 
-		active BOOLEAN);
+		active BOOLEAN,
+		eboard BOOLEAN);
 
 CREATE TABLE djShow(
 		tuftsID INTEGER, 
@@ -28,7 +29,7 @@ CREATE TABLE volunteerLog(
 	task TEXT);
 
 CREATE TABLE showRequest(
-       tuftsID INTEGER, --should be array but creates incompatible type error(int vs int[]) 
+       tuftsID INTEGER ARRAY, --should be array but creates incompatible type error(int vs int[]) 
        name TEXT,
        description TEXT,
        possibleShowdays INTEGER ARRAY[15],
@@ -41,7 +42,7 @@ CREATE TABLE showRenewal(
        showID INTEGER);
 
 ALTER TABLE showRequest
- ADD FOREIGN KEY (tuftsID)
+ ADD FOREIGN KEY (tuftsID[0])
  REFERENCES dj(tuftsID);
 
 ALTER TABLE showRenewal
