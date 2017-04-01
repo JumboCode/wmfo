@@ -20,7 +20,7 @@ export interface WMFOResponse {
     data?: any
 }
 
-function buildIGetBackError(message: string, error?: any): WMFOResponse {
+function buildWMFOError(message: string, error?: any): WMFOResponse {
     const errorResponse: WMFOResponse = {
         error: {
             message: message
@@ -35,19 +35,19 @@ function buildIGetBackError(message: string, error?: any): WMFOResponse {
 }
 
 export function badRequest(res: express.Response, message?: string, error?: any): void {
-    const response: WMFOResponse = buildIGetBackError(defaults(message, 'bad request'), error);
+    const response: WMFOResponse = buildWMFOError(defaults(message, 'bad request'), error);
 
     res.status(400).json(response);
 }
 
 export function internalError(res: express.Response, message?: string, error?: any): void {
-    const response: WMFOResponse = buildIGetBackError(defaults(message, 'internal server error'), error);
+    const response: WMFOResponse = buildWMFOError(defaults(message, 'internal server error'), error);
 
     res.status(500).json(response);
 }
 
 export function unauthorizedError(res: express.Response, message?: string, error?: any): void {
-    const response: WMFOResponse = buildIGetBackError(defaults(message, 'unauthorized'), error);
+    const response: WMFOResponse = buildWMFOError(defaults(message, 'unauthorized'), error);
 
     res.status(401).json(response);
 }
