@@ -2,25 +2,43 @@ const pgp = require('pg-promise')();
 const db = pgp('postgres://localhost:5432/wmfo');
 
 console.log("Hello World!");
-function getInsertUserId(firstName: string) {
-        return db.task((t: any) => {
-                        return t.oneOrNone
-         ('SELECT tuftsid FROM dj WHERE firstName = $1', 
-                            firstName, (u: any) => u && u.tuftsid)
-                .then((tuftsid: number) => {
-                      return tuftsid || t.one('INSERT INTO dj(firstName) VALUES($1)RETURNING tuftsid', firstName, (u: any)  => u.id);
-                                                                                });
-                                                });
+/*
+interface dj {
+  firstName: string;
+  lastName: string;
+  tuftsID: number;
 }
-//|| t.one('INSERT INTO Users(name) VALUES($1) RETURNING id', name, u => u.id)
+*/
 
-console.log('beforefunctioncall');
-var toprint = getInsertUserId('mac');
-
-console.log('AFTER');
-toprint.then(t => console.log(t));
-async function f() {
-    const id = await getInsertUserId('mac');
-    console.log('got from await:', id);
+/* Takes a first name string of a dj and returns the id of the dj */
+function getUserID(firstName: string): Promise<number> {
+    return db.one('SELECT tuftsid FROM dj WHERE firstName = $1', firstName);
 }
-f();
+
+/* Takes the name of the show and the id of the show and returns nothing */
+/*
+function insertShow(name:string, id: number) {
+    return db.none('INSERT INTO show(name, showID) VALUES($1, $2)', [name, id])
+    .then(() => {console.log("//////////inserted show")});
+
+}
+*/
+
+function getDj(tuftsID: number): Promise<string> {
+    return db.one('SELECT firstName FROM dj WHERE tuftsID = $1', tuftsID);
+}
+
+
+export async function printing() {
+  try {
+    const x: number = await getUserID('Mac');
+    console.log(x);
+    const name: string = await getDj(12345);
+    console.log(name);
+  } catch(e){
+    console.log("'exception: ' e");
+  }
+
+ // await insertShow('Annie', 618);
+}
+
