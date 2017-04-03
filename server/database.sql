@@ -1,3 +1,5 @@
+/*DROP TABLE IF EXISTS show CASCADE;*/
+
 CREATE TABLE show(
 		name TEXT,
 		description TEXT, 
@@ -8,6 +10,8 @@ CREATE TABLE show(
 		length INTEGER, 
 		alternating BOOLEAN);
 
+/*DROP TABLE IF EXISTS dj CASCADE;*/
+
 CREATE TABLE dj(
 		firstName TEXT, 
 		lastName TEXT, 
@@ -16,6 +20,8 @@ CREATE TABLE dj(
 		volunteerHours INTEGER, 
 		active BOOLEAN,
 		eboard BOOLEAN);
+
+/*DROP TABLE IF EXISTS djShow CASCADE;*/
 
 CREATE TABLE djShow(
 		tuftsID INTEGER, 

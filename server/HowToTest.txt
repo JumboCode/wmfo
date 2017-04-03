@@ -1,0 +1,87 @@
+Creds: Nicholas Metzger :P
+
+********** CREATING WMFO DATABASE WITH TABLES **********
+****** If you do not already have a wmfo database with the tables dj, djshow, 
+show, and volunteerlog then do the following:
+
+1) run psql (refer to RUNNING POSTRESS):
+
+2) create wmfo database (now inside psql command line):
+Nick=# CREATE DATABASE wmfo;
+
+3) quit psql
+
+4) now create dj, djshow, show, and volunteerlog tables inside wmfo database
+   (need to be at location .../wmfo/server where database.sql is located):
+-> psql -f database.sql -d wmfo
+
+5) all done :)
+
+
+
+********** RUNNING POSTGRESS **********
+1) Allow postgress to be run:
+-> postgres -D /usr/local/var/postgres
+
+2) Now in new tab or window, run postgres:
+-> psql
+
+(something like this should appear (but not with 'Nick'):
+
+-> psql (9.6.2)
+-> Type "help" for help.
+
+-> Nick=# 
+)
+
+
+
+********** PSQL COMMANDS *********
+(must already be in psql, refer to RUNNING POSTGRESS)
+-to list all databases: run
+    Nick=# \l
+
+-to quit psql
+    Nick=# \q
+
+-to connect to a certain database: run
+    Nick=# \connect <nameOfDataBase>
+    
+    e.g. 
+    Nick=# \connect wmfo
+    You are now connected to database "wmfo" as user "Nick".
+
+
+-to list all tables (relations) in the current database (must already be connected):
+    Nick=# dt
+    
+    e.g.
+    wmfo=# \dt
+    List of relations
+    Schema |     Name     | Type  | Owner 
+   --------+--------------+-------+-------
+    public | dj           | table | Nick
+    public | djshow       | table | Nick
+    public | show         | table | Nick
+    public | volunteerlog | table | Nick
+    (4 rows)
+
+
+
+********** TESTING JAVASCRIPT FILES **********
+To test a javascript file on a database, be in terminal (not psql) and run:
+-> node file_name.js
+
+To convert typescript files into javascript file run:
+-> npm run build <fileName.ts>
+
+
+********** GitHub help with branches *********
+To copy branch on remote Github repo to a local branch (this creates local branch as well):
+-> git fetch origin BranchName
+
+To work in certain branch, run:
+-> git checkout BranchName
+
+To push onto remote branch (On Github):
+-> git push -u origin BranchName
