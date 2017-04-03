@@ -1,8 +1,0 @@
-npm install -g express-generator@4.13.4
-express node-postgres-todo
-cd node-postgres-todo && npm install
-npm install supervisor@0.11.0 -g
-"scripts": {
-  "start": "supervisor ./bin/www"
-},
-npm start
