@@ -39,11 +39,11 @@ function insertShow(name:string, showID: number, day: number, hour: number, leng
 }
 */
 function getShow(id: number) {
-    return db.one('SELECT name FROM show  WHERE id = $1', id);
+    return db.one('SELECT name FROM show WHERE showID = $1', id);
 }
 export async function printing() {
   try {
-    //await insertShow('WhoIsGoingToWinThePineapple', 1, 1, 1, 1, true);
+  //  await insertShow('WhoIsGoingToWinThePineapple', 1, 1, 1, 1, true);
     const name: string = await getShow(1);
     console.log(name);
   } catch(e){
