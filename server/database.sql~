@@ -29,8 +29,8 @@ CREATE TABLE volunteerLog(
 	task TEXT);
 
 CREATE TABLE showRequest(
-       tuftsID INTEGER, -- primary key (1 tufts ID) 
-       otherIDs INTEGER ARRAY, -- all other tufts IDs
+       tuftsID INTEGER, --should be array but creates incompatible type error(int vs int[]) 
+       otherIDs TEXT, -- not the best way to do this but makes the above line work
        numDJs INTEGER,
        name TEXT,
        description TEXT,
