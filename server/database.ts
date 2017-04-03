@@ -11,6 +11,20 @@ interface dj {
 */
 
 
+/* DJSHOW (have not tested yet)*/
+function insertDjShow(tuftsID: number, showID: number) {
+	 return db.none('INSERT INTO djShow(tuftsID, showID) VALUES($1, $2)', [tuftsID, showID])
+	 .then(() => {console.log("///WE INSERTED NEW DJSHOW!")});
+}
+
+function getShow(tuftsID: number): Promise<number> {
+	 return db.one('SELECT showid FROM djshow WHERE tuftsID = $1', tuftsID);
+}
+
+function getDj(showID: number): Promise<number> {
+	 return db.one('SELECT tuftsid FROM djshow WHERE showID = $1', showID);
+}
+
 /* DJ TABLE */
 /* Takes a first name string of a dj and returns the id of the dj */
 
