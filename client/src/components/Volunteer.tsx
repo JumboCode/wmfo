@@ -1,23 +1,46 @@
 import * as React from "react";
-
-export interface ShowFormProps { compiler: string; framework: string; }
-{/*import {Link} from "react-router";*/}
-//export interface DJNameFormProps {name: string;}
-//export interface ShowNameFormProps {name: string;}
+export interface VolunteerProps { compiler: string; framework: string; }
 
 
-
-export class ShowForm extends React.Component<ShowFormProps, any> 
-{
-    render (){
-        return (
-                <div id="show_form">
-                    <DJNameForm/>
-                    <ShowNameForm/>
-                </div>
-            )
+export class Volunteer extends React.Component<VolunteerProps, undefined> {
+    render() {
+    	return (
+    		<div>
+    			<DJNameForm/>
+    			<DateForm/>
+    			<Reason/>
+			</div>
+		);
     }
 }
+
+export default class Reason extends React.Component<any, any> {
+    constructor(props: any){
+        super(props);
+        this.state = { name: this.props.defaultName };
+    }
+
+    public handleOnChange(event: any) : void {
+        this.setState({ name: event.target.value });
+    }
+
+    public render() {
+        return (
+            <div>
+                <div>
+                    <input 
+                        onChange={ e => this.handleOnChange(e) }
+                    />
+                </div>
+                <div>
+                    { this.state.name }!
+                </div>
+            </div>
+        );
+    }
+}
+
+
 
 class DJNameForm extends React.Component<any, any> 
 {
@@ -52,12 +75,11 @@ class DJNameForm extends React.Component<any, any>
   }
 }
 
-
-class ShowNameForm extends React.Component<any, any> 
+class DateForm extends React.Component<any, any> 
 {
   constructor(props: any) {
     super(props);
-    this.state = {name: "show" };
+    this.state = {name: "DJ"};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -68,7 +90,7 @@ class ShowNameForm extends React.Component<any, any>
   }
 
   public handleSubmit(event:any) : void {
-    alert('A show name was submitted: ' + this.state.name);
+    alert('A name was submitted: ' + this.state.name);
     event.preventDefault();
   }
 
@@ -76,7 +98,7 @@ class ShowNameForm extends React.Component<any, any>
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Show Name:
+          Date:
           <br/>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
@@ -85,4 +107,3 @@ class ShowNameForm extends React.Component<any, any>
     );
   }
 }
-
