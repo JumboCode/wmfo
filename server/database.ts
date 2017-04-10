@@ -2,13 +2,22 @@ const pgp = require('pg-promise')();
 const db = pgp('postgres://localhost:5432/wmfo');
 
 console.log("Hello World!");
-/*
-interface dj {
-  firstName: string;
-  lastName: string;
-  tuftsID: number;
+
+// create interfaces
+// query select * for each table and parse and put in
+// an instance of the interface
+
+interface show {
+  name: string;
+  description: string;
+  showID: number;
+  semestersActive: number;
+  day: number;
+  hour: number;
+  length: number;
+  alternating: boolean;
 }
-*/
+
 
 
 /* DJ TABLE */
