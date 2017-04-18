@@ -17,7 +17,7 @@ export enum HttpMethod {
 };
 
 export class RouteManager {
-    constructor(private app: express.Express) {
+    constructor(private readonly app: express.Express, private readonly loginRoute: string) {
     }
 
     public addSecureRoutes(routes: SecureRoute[]): void {
@@ -58,7 +58,7 @@ export class RouteManager {
             const authTokenResult: Maybe<AuthToken> = security.parseCookie(cookie);
             const unauthorizedCont = () => {
                 if (!route.isAjax) {
-                    res.redirect('/login');
+                    res.redirect(this.loginRoute);
                 } else {
                     unauthorizedError(res);
                 }
