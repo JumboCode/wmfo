@@ -55,9 +55,9 @@ function insertVlog(tuftsID: number, date: Date, length: number, approved: boole
 }
 
 
-/* Return's all dates of vlogs under same tuftsID */
+/* Return's all entered info of vlogs under same tuftsID */
 function getVlog(tuftsID: number): Promise<Date> {
-    return db.any('SELECT date FROM volunteerlog WHERE tuftsID = $1', tuftsID);
+    return db.any('SELECT * FROM volunteerlog WHERE tuftsID = $1', tuftsID);
 }
 
 
@@ -76,8 +76,6 @@ export async function printing() {
   } catch(e){
     console.log("'exception: ' e");
   }
- // insertDj('Nick', 'Metzger', 'NickyMetz', 69, 9, true);
- // await insertShow('Annie', 618);
 }
 
 
