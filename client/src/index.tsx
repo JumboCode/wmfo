@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Router, Route, browserHistory, IndexRoute } from "react-router"
 import {Link} from "react-router";
 
+import { SocialIcon } from 'react-social-icons';
 
 import { Home } from "./components/Home";
 import { About } from "./components/About";
@@ -34,12 +35,14 @@ class App extends React.Component<undefined, undefined> {
                         </ul>
 
             {this.props.children}
+
+            <SocialIcon url="http://twitter.com/jaketrent"/>
+                   
             </div>
         )
     }
 };
 ReactDOM.render((
-
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
@@ -52,4 +55,4 @@ ReactDOM.render((
             <Route path="*" component={Unknown}/>
         </Route>
     </Router>
-), document.getElementById('wmfo-content'));
+    ) , document.getElementById('wmfo-content'));

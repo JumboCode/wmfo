@@ -25,5 +25,8 @@
     "source-map-loader": "^0.1.5",
     "typescript": "^2.1.4",
     "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "react-social-icons": "^2.6.0"
   }
 }

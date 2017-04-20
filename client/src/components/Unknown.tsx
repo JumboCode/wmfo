@@ -1,10 +1,10 @@
 import * as React from "react";
 
-export interface HelloProps { compiler: string; framework: string; }
+export interface UnknownProps { compiler: string; framework: string; }
 
-export class Unknown extends React.Component<HelloProps, undefined> {
+export class Unknown extends React.Component<UnknownProps, undefined> {
     render() {
-        return <h1>Unknown</h1>;
+        return <h1>Error 404: Page not found.</h1>;
     }
 }
 

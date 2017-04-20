@@ -1,7 +1,6 @@
 import * as React from "react";
 
 export interface ShowFormProps { compiler: string; framework: string; }
-{/*import {Link} from "react-router";*/}
 //export interface DJNameFormProps {name: string;}
 //export interface ShowNameFormProps {name: string;}
 

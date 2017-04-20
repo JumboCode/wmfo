@@ -6,4 +6,3 @@ export class Contact extends React.Component<ContactProps, undefined> {
         return <h1>Contact Us</h1>;
     }
 }
-
