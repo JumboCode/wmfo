@@ -21,21 +21,53 @@ app.get('/test', (req, res) => {
 
 const routeManager = new RouteManager(app);
 
-const tripFromCampusCreateBuilder = <SecureRouteBuilder>new SecureRouteBuilder('/Marilyn', (req, res, token) => {
-console.log("HI GRAHAM");
+
+const scheduleBuilder = <SecureRouteBuilder>new SecureRouteBuilder('/schedule', (req, res, token) => {
+console.log("Welcome to the WMFO scheduling page");
 }, PermissionLevel.DJ)
+        .setIsAjax(true)
+        .setHttpMethod(HttpMethod.GET);
+
+const addDJBuilder = <SecureRouteBuilder>new SecureRouteBuilder('/addDJ', (req, res, token) => {
+console.log("Adding DJ");
+}, PermissionLevel.EXEC)
         .setIsAjax(true)
         .setHttpMethod(HttpMethod.POST);
 
+const removeDJBuilder = <SecureRouteBuilder>new SecureRouteBuilder('/removeDJ', (req, res, token) => {
+console.log("removing DJ");
+}, PermissionLevel.EXEC)
+        .setIsAjax(true)
+        .setHttpMethod(HttpMethod.POST);
 
-const fromCampusCreateRoutes: SecureRoute = new SecureRoute(tripFromCampusCreateBuilder);
+const loginBuilder = <InsecureRouteBuilder>new InsecureRouteBuilder('/login', 
+                                                          (req, res) => 
+{ console.log("Welcome to the WMFO login page");}) 
+        .setIsAjax(true)
+        .setHttpMethod(HttpMethod.GET);
+
+
+const scheduleRoute: SecureRoute = new SecureRoute(scheduleBuilder);
+const addDJRoute: SecureRoute = new SecureRoute(addDJBuilder);
+const removeDJRoute: SecureRoute = new SecureRoute(removeDJBuilder);
+const loginRoute: InsecureRoute = new InsecureRoute(loginBuilder);
+
+
 
 const secureRoutes = [
-
-    fromCampusCreateRoutes
+    scheduleRoute,
+    addDJRoute,
+    removeDJRoute
 ];
 
+
+const insecureRoutes = [
+    loginRoute
+];
+
+
 routeManager.addSecureRoutes(secureRoutes);
+routeManager.addInsecureRoutes(insecureRoutes);
 
 app.get('/*', (_, res: express.Response) => {
     console.log("Pikachu I choose you!");
