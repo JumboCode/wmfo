@@ -2,6 +2,23 @@ body {
     background-color: #333333;
 }
 
+#logo {
+    width:254px;height:95px;
+}
+
+#studio_pic {
+    width:660px;height:344px
+}
+
+form {
+    font-family: "Avenir";
+    list-style-type: none;
+    border: 3px solid #e7e7e7;
+    background-color: #f3f3f3;
+    border: 1px solid;
+    width:20%;
+}
+
 ul {
 	font-family: "Avenir";
     list-style-type: none;
@@ -36,24 +53,42 @@ li a.active {
     background-color: grey;
 }
 
-li a.active:hover {
-    background-color: #bbb;
+#phone {
+    padding: 25px;
+    font-family: "Avenir";
+    color: #e7e7e7;
+    font-size: 28px;
+    float:right;
+}
+
+#main{
+    font-family: "Avenir";
+    overflow:hidden;
 }
 
 #user {
-	font-family: "Avenir";
     background-color: #f3f3f3;
     width: 250px;
-    height: 600px;
+    height: 340px;
     padding: 25px;
     margin: 25px;
     text-decoration: none;
     list-style-type: none;
     border: 2px solid;
     border-radius: 15px;
+    float:left;
 }
 
-#logo {
-    width: 350px;
-    margin: 20px 20px;
+#studio {
+    background-color: #f3f3f3;
+    z-index: 3;
+    width: 656px;
+    height: 340px;
+    padding: 25px;
+    margin: 25px;
+    text-decoration: none;
+    list-style-type: none;
+    border: 2px solid;
+    border-radius: 15px;
+    float:right;
 }
