@@ -2,7 +2,7 @@ const pgp = require('pg-promise')();
 const db = pgp('postgres://localhost:5432/wmfo');
 
 console.log("Hello World!");
-printing();
+//printing();
 /*
 interface dj {
   firstName: string;
