@@ -1,0 +1,84 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const pgp = require('pg-promise')();
+const db = pgp('postgres://localhost:5432/wmfo');
+console.log("Hello World!");
+/*
+interface dj {
+  firstName: string;
+  lastName: string;
+  tuftsID: number;
+}
+*/
+/* DJSHOW (have not tested yet)*/
+function insertDjShow(tuftsID, showID) {
+    return db.none('INSERT INTO djShow(tuftsID, showID) VALUES($1, $2)', [tuftsID, showID])
+        .then(() => { console.log("///WE INSERTED NEW DJSHOW!"); });
+}
+function getShowFromDjShow(tuftsID) {
+    return db.one('SELECT showid FROM djshow WHERE tuftsID = $1', tuftsID);
+}
+function getDjFromDjShow(showID) {
+    return db.one('SELECT tuftsid FROM djshow WHERE showID = $1', showID);
+}
+/* DJ TABLE */
+/* Takes a first name string of a dj and returns the id of the dj */
+/*function getUserID(firstName: string): Promise<number> {
+    return db.one('SELECT tuftsid FROM dj WHERE firstName = $1', firstName);
+}*/
+/*function getDj(tuftsID: number): Promise<string> {
+    return db.one('SELECT firstName FROM dj WHERE tuftsID = $1', tuftsID);
+}*/
+function insertDj(firstName, lastName, djName, tuftsID, volunteerHours, active) {
+    return db.none('INSERT INTO dj(firstName, lastName, djName, tuftsID, volunteerHours, active) VALUES($1, $2, $3, $4, $5, $6)', [firstName, lastName, djName, tuftsID, volunteerHours, active])
+        .then(() => { console.log("//////WE INSERTED NEW DJ"); });
+}
+/* INSERTING DATA TO SHOW TABLE */
+/* Takes the name of the show and the id of the show and returns nothing */
+function insertShow(name, showID, day, hour, length, alternating) {
+    return db.none('INSERT INTO show(name, showid, day, hour, length, alternating) VALUES($1, $2, $3, $4, $5, $6)', [name, showID, day, hour, length, alternating])
+        .then(() => { console.log("//////////inserted show"); });
+}
+/*function getShow(id: number) {
+    return db.one('SELECT name FROM show WHERE showID = $1', id);
+}*/
+/*export async function printing() {
+  try {
+  //  await insertShow('WhoIsGoingToWinThePineapple', 1, 1, 1, 1, true);
+    const name: string = await getShow(1);
+    console.log(name);
+  } catch(e){
+    console.log("'exception: ' e");
+  }
+}*/
+function printing() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            insertDj('Nick', 'Metzger', 'NickyMetz', 69, 9, true);
+            insertShow('pineapple', 777, 5, 2, 1, true);
+             const x: number = await getUserID('Nick');
+             console.log(x);
+             const name: string = await getDj(69);
+             console.log(name)/
+            yield insertDjShow(69, 777);
+            const y = yield getShowFromDjShow(69);
+            console.log(y);
+            const djx = yield getDjFromDjShow(777);
+            console.log(djx);
+        }
+        catch (e) {
+            console.log("'exception: ' e");
+        }
+        // insertDj('Nick', 'Metzger', 'NickyMetz', 69, 9, true);
+        // await insertShow('Annie', 618);
+    });
+}
+exports.printing = printing;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGF0YWJhc2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJkYXRhYmFzZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQSxNQUFNLEdBQUcsR0FBRyxPQUFPLENBQUMsWUFBWSxDQUFDLEVBQUUsQ0FBQztBQUNwQyxNQUFNLEVBQUUsR0FBRyxHQUFHLENBQUMsZ0NBQWdDLENBQUMsQ0FBQztBQUVqRCxPQUFPLENBQUMsR0FBRyxDQUFDLGNBQWMsQ0FBQyxDQUFDO0FBQzVCOzs7Ozs7RUFNRTtBQUdGLGlDQUFpQztBQUNqQyxzQkFBc0IsT0FBZSxFQUFFLE1BQWM7SUFDbkQsTUFBTSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsb0RBQW9ELEVBQUUsQ0FBQyxPQUFPLEVBQUUsTUFBTSxDQUFDLENBQUM7U0FDdEYsSUFBSSxDQUFDLFFBQU8sT0FBTyxDQUFDLEdBQUcsQ0FBQyw0QkFBNEIsQ0FBQyxDQUFBLENBQUEsQ0FBQyxDQUFDLENBQUM7QUFDM0QsQ0FBQztBQUVELDJCQUEyQixPQUFlO0lBQ3hDLE1BQU0sQ0FBQyxFQUFFLENBQUMsR0FBRyxDQUFDLDhDQUE4QyxFQUFFLE9BQU8sQ0FBQyxDQUFDO0FBQ3pFLENBQUM7QUFFRCx5QkFBeUIsTUFBYztJQUNyQyxNQUFNLENBQUMsRUFBRSxDQUFDLEdBQUcsQ0FBQyw4Q0FBOEMsRUFBRSxNQUFNLENBQUMsQ0FBQztBQUN4RSxDQUFDO0FBRUQsY0FBYztBQUNkLG9FQUFvRTtBQUdwRTs7R0FFRztBQUVIOztHQUVHO0FBRUgsa0JBQWtCLFNBQWlCLEVBQUUsUUFBZ0IsRUFBRSxNQUFjLEVBQUUsT0FBZSxFQUFFLGNBQXNCLEVBQUUsTUFBZTtJQUMzSCxNQUFNLENBQUMsRUFBRSxDQUFDLElBQUksQ0FBQyw2R0FBNkcsRUFBRSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxFQUFFLE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxDQUFDLENBQUM7U0FDNUwsSUFBSSxDQUFDLFFBQU8sT0FBTyxDQUFDLEdBQUcsQ0FBQywwQkFBMEIsQ0FBQyxDQUFBLENBQUEsQ0FBQyxDQUFDLENBQUM7QUFDM0QsQ0FBQztBQUdELGtDQUFrQztBQUNsQywyRUFBMkU7QUFFM0Usb0JBQW9CLElBQVcsRUFBRSxNQUFjLEVBQUUsR0FBVyxFQUFFLElBQVksRUFBRSxNQUFjLEVBQUUsV0FBb0I7SUFDNUcsTUFBTSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsK0ZBQStGLEVBQUUsQ0FBQyxJQUFJLEVBQUUsTUFBTSxFQUFFLEdBQUcsRUFBRSxJQUFJLEVBQUUsTUFBTSxFQUFFLFdBQVcsQ0FBQyxDQUFDO1NBQzlKLElBQUksQ0FBQyxRQUFPLE9BQU8sQ0FBQyxHQUFHLENBQUMseUJBQXlCLENBQUMsQ0FBQSxDQUFBLENBQUMsQ0FBQyxDQUFDO0FBRTFELENBQUM7QUFFRDs7R0FFRztBQUNIOzs7Ozs7OztHQVFHO0FBR0g7O1FBQ0UsSUFBSSxDQUFDO1lBQ0gsUUFBUSxDQUFDLE1BQU0sRUFBRSxTQUFTLEVBQUUsV0FBVyxFQUFFLEVBQUUsRUFBRSxDQUFDLEVBQUUsSUFBSSxDQUFDLENBQUM7WUFDdEQsVUFBVSxDQUFDLFdBQVcsRUFBRSxHQUFHLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsSUFBSSxDQUFDLENBQUM7WUFHN0M7OztpQ0FHcUI7WUFFcEIsTUFBTSxZQUFZLENBQUMsRUFBRSxFQUFFLEdBQUcsQ0FBQyxDQUFDO1lBQzVCLE1BQU0sQ0FBQyxHQUFXLE1BQU0saUJBQWlCLENBQUMsRUFBRSxDQUFDLENBQUM7WUFDOUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUNmLE1BQU0sR0FBRyxHQUFXLE1BQU0sZUFBZSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1lBQy9DLE9BQU8sQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUM7UUFDbkIsQ0FBQztRQUFDLEtBQUssQ0FBQSxDQUFDLENBQUMsQ0FBQyxDQUFBLENBQUM7WUFDVCxPQUFPLENBQUMsR0FBRyxDQUFDLGlCQUFpQixDQUFDLENBQUM7UUFDakMsQ0FBQztRQUNGLHlEQUF5RDtRQUN6RCxrQ0FBa0M7SUFDbkMsQ0FBQztDQUFBO0FBckJELDRCQXFCQyJ9
