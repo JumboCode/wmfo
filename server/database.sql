@@ -1,41 +1,43 @@
 /*DROP TABLE IF EXISTS show CASCADE;*/
 
 CREATE TABLE show(
-		name TEXT,
-		description TEXT, 
-		showID INTEGER PRIMARY KEY,
-		semestersActive INTEGER, 
-		day INTEGER, 
-		hour INTEGER, 
-		length INTEGER, 
-		alternating BOOLEAN);
+    name TEXT,
+    description TEXT,
+    showID INTEGER PRIMARY KEY,
+    semestersActive INTEGER,
+    day INTEGER,
+    hour INTEGER,
+    length INTEGER,
+    alternating BOOLEAN);
 
 /*DROP TABLE IF EXISTS dj CASCADE;*/
 
 CREATE TABLE dj(
-		firstName TEXT, 
-		lastName TEXT, 
-		djName TEXT, 
-		tuftsID INTEGER PRIMARY KEY, 
-		volunteerHours INTEGER, 
-		active BOOLEAN,
-		eboard BOOLEAN);
+    firstName TEXT,
+    lastName TEXT,
+    djName TEXT,
+    tuftsID INTEGER,
+        email VARCHAR(100) PRIMARY KEY,
+    volunteerHours INTEGER,
+        passwordHash: TEXT,
+    active BOOLEAN,
+    eboard BOOLEAN);
 
 /*DROP TABLE IF EXISTS djShow CASCADE;*/
 
 CREATE TABLE djShow(
-		tuftsID INTEGER, 
-		showID INTEGER);
+    tuftsID INTEGER,
+    showID INTEGER);
 
 CREATE TABLE volunteerLog(
-	tuftsID INTEGER, 
-	date DATE, 
-	length INTEGER, 
-	approved BOOLEAN, 
-	task TEXT);
+  tuftsID INTEGER,
+  date DATE,
+  length INTEGER,
+  approved BOOLEAN,
+  task TEXT);
 
 CREATE TABLE showRequest(
-       tuftsID INTEGER, -- primary key (1 tufts ID) 
+       tuftsID INTEGER, -- primary key (1 tufts ID)
        otherIDs INTEGER ARRAY, -- all other tufts IDs
        numDJs INTEGER,
        name TEXT,
