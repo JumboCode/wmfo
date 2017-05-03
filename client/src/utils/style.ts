@@ -1,19 +1,13 @@
 const GRAY = '#C8D3D5';
-const GRAY_BLUE = '#A4B8C4';
 const WHITE = '#FFF';
-const BLUE = '#00A7E1';
-const DARK_BLUE = '#00171F';
 const BLACK = '#000';
 
-const BACKGROUND = DARK_BLUE;
+const BACKGROUND = GRAY;
 const FONT_COLOR = WHITE;
 
 export const Styles = {
     GRAY: GRAY,
-    GRAY_BLUE: GRAY_BLUE,
     WHITE: WHITE,
-    BLUE: BLUE,
-    DARK_BLUE: DARK_BLUE,
     BLACK: BLACK,
     globalStyle: {
         backgroundColor: BACKGROUND,
@@ -23,22 +17,22 @@ export const Styles = {
     },
     navbarStyle: {
         navbarGlobal: {
-            background: GRAY_BLUE,
+            background: GRAY,
             borderColor: BLACK
         }
     },
     inputBoxStyle: {
         padding: '10px',
-        width: '70%',
+        width: '90%',
         border: 'solid 1px #FFF',
         transition: 'box-shadow 0.3s, border 1.3s',
         color: 'black',
         borderRadius: '0.3em',
-        margin: '2%'
+        margin: 'atu'
     },
     buttonStyle: {
         submitButton: {
-            background: GRAY_BLUE,
+            background: GRAY,
             display: 'inline-block',
             margin: '1%',
             borderRadius: 0,
