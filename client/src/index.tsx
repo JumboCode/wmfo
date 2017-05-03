@@ -3,16 +3,13 @@ import * as ReactDOM from "react-dom";
 import { Router, Route, browserHistory, IndexRoute } from "react-router"
 import {Link} from "react-router";
 
-import { SocialIcon } from 'react-social-icons';
 
 import { Home } from "./components/Home";
-import { About } from "./components/About";
 import { ShowForm } from "./components/ShowForm"
 import { Volunteer } from "./components/Volunteer";
-import { Contact } from "./components/Contact";
 import { Links } from "./components/Links";
 import { Unknown } from "./components/Unknown";
-
+import { Register } from "./components/Register";
 
 class App extends React.Component<undefined, undefined> {
     render() {
@@ -27,16 +24,13 @@ class App extends React.Component<undefined, undefined> {
 
                         <ul>
                           <li><Link to ="/">Home</Link></li>
-                          <li><Link to="/contact">Contact</Link></li>
-                          <li><Link to="/about">About</Link></li>
+                          <li><Link to ="/register">Register</Link></li>
                           <li><Link to="/show_form">Show Form</Link></li>
                           <li><Link to="/volunteer_form">Log Volunteer Hours</Link></li>
                           <li><Link to="/links">Important Links</Link></li>
                         </ul>
 
             {this.props.children}
-
-            <SocialIcon url="http://twitter.com/jaketrent"/>
                    
             </div>
         )
@@ -46,12 +40,11 @@ ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
-            <Route path="about" component={About}/>
             <Route path="home" component={Home}/>
             <Route path="show_form" component={ShowForm}/>
             <Route path="volunteer_form" component={Volunteer}/>
-            <Route path="contact" component={Contact}/>
             <Route path="links" component ={Links}/>
+            <Route path="register"component={Register}/>
             <Route path="*" component={Unknown}/>
         </Route>
     </Router>
