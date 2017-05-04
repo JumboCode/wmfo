@@ -44,7 +44,9 @@ export class Register extends FormComponent<{}, InputState> {
         condition: (state: InputState) => state.password.length < 6
     }, {
         field: 'emailError',
-        condition: (state: InputState) => !/^.+@.+\.edu/.test(state.email)
+        //condition: (state: InputState) => !/^.+@.+\.edu/.test(state.email)
+        condition: (state: InputState) => !/^.+@.+\./.test(state.email)
+
     }, {
         field: 'firstNameError',
         condition: (state: InputState) => state.firstName.length === 0
@@ -92,8 +94,8 @@ export class Register extends FormComponent<{}, InputState> {
             <div>
                 <div id="user">
 
-
-                <FormContainer width='10%' header='Register'>
+                <h1> Register</h1>
+                <FormContainer width='10%' header=''>
                     <form onKeyUp={this.handleKeyUp.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                         <div id="columnContainer" style={{
                                 overflow: 'hidden'
@@ -109,7 +111,7 @@ export class Register extends FormComponent<{}, InputState> {
                                     value={this.state.firstName}
                                     onChange={this.handleChange.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={false}
                                     doShow={this.state.firstNameError}
                                     message='Must have a first name'/>
@@ -122,7 +124,7 @@ export class Register extends FormComponent<{}, InputState> {
                                     value={this.state.lastName}
                                     onChange={this.handleChange.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={false}
                                     doShow={this.state.lastNameError}
                                     message='Must have a last name'/>
@@ -135,10 +137,10 @@ export class Register extends FormComponent<{}, InputState> {
                                     value={this.state.email}
                                     onChange={this.handleChange.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={false}
                                     doShow={this.state.emailError}
-                                    message='Please enter a valid .edu email'/>
+                                    message='Please enter a valid email'/>
                             </div>
 
                             <div id="rightColumn" style={{
@@ -152,7 +154,7 @@ export class Register extends FormComponent<{}, InputState> {
                                     value={this.state.password}
                                     onChange={this.handleChange.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={false}
                                     doShow={this.state.passwordLength}
                                     message='Password must be at least six characters'/>
@@ -165,7 +167,7 @@ export class Register extends FormComponent<{}, InputState> {
                                     value={this.state.passwordConfirm}
                                     onChange={this.handleChange.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={false}
                                     doShow={this.state.passwordMatch}
                                     message='Passwords must match'/>
@@ -176,7 +178,7 @@ export class Register extends FormComponent<{}, InputState> {
                                     value="Submit"
                                     onClick={this.handleSubmit.bind(this)}/>
                                 <Message
-                                    color={Styles.WHITE}
+                                    color={Styles.BLACK}
                                     reserveSpace={true}
                                     doShow={this.state.emailTakenError}
                                     message='Email already in use'/>
